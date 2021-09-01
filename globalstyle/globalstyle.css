@@ -1,3 +1,8 @@
+html,
+body {
+  background: lightblue;
+}
+
 h1,
 h2,
 h3,
@@ -8,14 +13,22 @@ h5 {
   margin-bottom: 0;
 }
 
-html {
-  background: lightblue url("media/background.png") repeat;
-}
-
-body {
+.feed {
   width: 50%;
   margin: auto;
   padding-top: 2vh;
+}
+
+@media screen and (max-width: 1000px) {
+  .feed {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .feed {
+    width: 96%;
+  }
 }
 
 section {
@@ -23,6 +36,46 @@ section {
   background-color: rgba(255, 255, 208, 0.918);
   padding: 5px;
   border-radius: 10px;
+}
+
+section img {
+  max-width: 100%;
+}
+
+header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr;
+      grid-template-columns: 3fr 1fr;
+}
+
+.linkButton {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: 2px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.linkButton:hover {
+  background-color: white;
+}
+
+header > .linkButton {
+  background-color: white;
+  justify-self: flex-end;
+}
+
+header > .linkButton:hover {
+  background-color: rgba(255, 255, 208, 0.918);
 }
 
 h1 {
@@ -87,9 +140,14 @@ tr:nth-child(even) {
 }
 
 footer {
-  width: 100%;
+  width: 98%;
+  margin: auto;
   background-color: white;
   padding: 5px;
   border-radius: 10px;
 }
-/*# sourceMappingURL=style.css.map */
+
+.center {
+  margin: auto;
+}
+/*# sourceMappingURL=globalstyle.css.map */

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppgave 2.4</title>
+</head>
+<body>
+    <script>
+        document.write(
+            `
+            
+            <header>
+                <div class="headertekst">
+                    <h1>Oppgave 2.4: Tekst og liste i script</h1>
+                    <h3>Uke 35 - skrevet i javascript</h3>
+                </div>
+                <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+            </header>
+
+            <div class="feed">
+            <section>
+                <h2>Her er de siste filmene jeg så på kino: </h2>
+                <ol>
+                    <li>Free Guy</li>
+                    <li>The Scuicide Scuad</li>
+                    <li>The Curier</li>
+                    <li>Verdens verste menneske</li>
+                </ol>
+                <p>(Dette er kanskje fordi jeg jobber på kinoen?)</p>
+                <img id="kinosal">
+            </section>
+            </div>
+
+            <footer>
+            © Anders Garberg 2021
+            </footer>
+            `
+        )
+        document.getElementById("kinosal").src = 'https://mars-images.imgix.net/nova%201%20ovenfra%20mot%20lerret%20skr%C3%A5%20NY%20nettside%20(1).jpg?auto=compress';
+
+
+    </script>
+
+    
+</body>
+
+</html>
