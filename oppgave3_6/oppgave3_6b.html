@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 3.6B</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 3.6B: Pengebruk</h1>
+            <h3>Uke 36</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Forbrukskalkulator</h2>
+        <img src="https://www.klartale.no/resizer/UQaKjuJKkB9K0KIL-G4dgnlbMKA=/arc-photo-mentormedier/eu-central-1-prod/public/ORRP4NUIMODAXTNP4ZUYAOXKKI.jpg" alt="" style="width: 50%;">
+        <div id="resultat"></div>
+    </section>
+
+    <script>
+        var mat = parseInt(prompt("Hvor mye bruker du på mat i løpet av én dag?"));
+        var drikke = parseInt(prompt("Hvor mye bruker du på drikke i løpet av én dag?"));
+        var snus = parseInt(prompt("Hvor mye bruker du på snus i løpet av én dag?"));
+
+        var sum = mat+drikke+snus;
+        document.getElementById("resultat").innerHTML=`
+        Wow dude! Du har brukt: <br>
+        ${mat}kr på mat, <br>
+        ${drikke}kr på drikke og <br>
+        ${snus}kr på snus. <br>
+        <b>Det blir totalt ${sum}kr!</b>
+        `;
+
+        if(sum > 200){
+            document.getElementById("resultat").innerHTML+=`<br><b>Stopp! Du har brukt over budsjettet på 200kr!</b>`;
+            alert("Stopp! Du har brukt over budsjettet på 200kr!")
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 3.6A</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 3.6A: Ønske velkommen</h1>
+            <h3>Uke 36</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Melding</h2>
+        <div id="melding"></div>
+        <img src="https://web.trondelagfylke.no/contentassets/109608377f814e2cbc75c155ed6f4909/thora-storm_-2-small.jpg?width=800" alt="">
+    </section>
+
+    <script>
+        var navn = prompt("Hva heter du?");
+        document.getElementById("melding").innerHTML = `Heisann ${navn}, så hyggelig å møte deg! `;
+
+        var skole = prompt("Hvilken skole går du på?", "Thora Storm");
+        var respons;
+
+        switch(skole){
+            case "Thora Storm":
+                respons = "Så kult at du går på Thora, det er den kuleste skolen!";
+                break;
+            default:
+                respons = `Æsj, går du på ${skole}? Thora er bedre!`
+                break;
+        }   
+
+        document.getElementById("melding").innerHTML += respons;
+    </script>
+
+
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
