@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 3.10</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 3.10: Terning</h1>
+            <h3>Uke 37</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Valgt terning</h2>
+        <form id="valgtTerningForm">
+            <label for="terning">Velg en terning:</label>
+            <select id="terning" name="terning">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+            <input type="submit">
+        </form>
+        <img src="" alt="" id="valgtTerningImg">
+    </section>
+    
+    <section>
+        <h2>Tilfeldig terning</h2>
+        <button id="ranTerningButton">Tilfeldig terning</button>
+        <img src="" alt="" id="ranTerningImg">
+    </section>
+
+    <script>
+        var valgtTerningForm = document.getElementById("valgtTerningForm");
+        var ranTerningButton = document.getElementById("ranTerningButton");
+
+        valgtTerningForm.addEventListener('submit', (e) =>{
+            e.preventDefault();
+            var valgtTerNr = valgtTerningForm['terning'].value;
+            document.getElementById("valgtTerningImg").src = "media/terning"+valgtTerNr+".jpg";
+        });
+
+        ranTerningButton.addEventListener('click', function() {
+            var ranTerNr = parseInt(Math.floor(Math.random() * 6) + 1);
+            console.log(ranTerNr);
+            document.getElementById("ranTerningImg").src = "media/terning"+ranTerNr+".jpg";
+        });
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
