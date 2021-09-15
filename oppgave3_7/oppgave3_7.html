@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 3.7</title>
+</head>
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Oppgave 3.7: Kalkulator</h1>
+            <h3>Uke 37</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Kalkulator</h2>
+        <div id="kalkulator"></div>
+    </section>
+
+    <script>
+        var tall1 = parseInt(prompt("Første tall"));
+        var tall2 = parseInt(prompt("Andre tall"));
+        document.getElementById("kalkulator").innerHTML += `
+        <table style="width: 50%;">
+            <tr>
+                <th>Tall 1</th>
+                <th>Rengeart</th>
+                <th>Tall 2</th>
+                <th>=</th>
+            </tr>
+            <tr>
+                <td>${tall1}</td>
+                <td>+</td>
+                <td>${tall2}</td>
+                <td>${tall1 + tall2}</td>
+            </tr>
+            <tr>
+                <td>${tall1}</td>
+                <td>-</td>
+                <td>${tall2}</td>
+                <td>${tall1 - tall2}</td>
+            </tr>
+            <tr>
+                <td>${tall1}</td>
+                <td>*</td>
+                <td>${tall2}</td>
+                <td>${tall1 * tall2}</td>
+            </tr>
+            <tr>
+                <td>${tall1}</td>
+                <td>/</td>
+                <td>${tall2}</td>
+                <td>${(tall1 / tall2).toFixed(2)}</td>
+            </tr>
+        </table>
+
+        `;      
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
