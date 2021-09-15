@@ -33,18 +33,27 @@
             </select>
             <input type="submit">
         </form>
-        <img src="" alt="" id="valgtTerningImg">
+        <img src="" alt="" id="valgtTerningImg" style="height: 30vh;">
     </section>
     
     <section>
         <h2>Tilfeldig terning</h2>
         <button id="ranTerningButton">Tilfeldig terning</button>
-        <img src="" alt="" id="ranTerningImg">
+        <img src="" alt="" id="ranTerningImg" style="height: 30vh;">
+    </section>
+
+    <section>
+        <h2>Seks terninger</h2>
+        <button id="seksTerningButton">Kast seks terninger</button>
+        <div id="seksTerBilder"></div>
+        <p><string id="seksTerResT"></string><string id="seksTerResS"></string></p>
+        <p id="maxmin"></p>
     </section>
 
     <script>
         var valgtTerningForm = document.getElementById("valgtTerningForm");
         var ranTerningButton = document.getElementById("ranTerningButton");
+        var seksTerningButton = document.getElementById("seksTerningButton");
 
         valgtTerningForm.addEventListener('submit', (e) =>{
             e.preventDefault();
@@ -56,6 +65,37 @@
             var ranTerNr = parseInt(Math.floor(Math.random() * 6) + 1);
             console.log(ranTerNr);
             document.getElementById("ranTerningImg").src = "media/terning"+ranTerNr+".jpg";
+        });
+
+        seksTerningButton.addEventListener('click',function() {
+            var seksTerningSum = 0;
+            var maxnum = 0;
+            var minnum = 6;
+            document.getElementById("seksTerBilder").innerHTML = "";
+            document.getElementById("seksTerResT").innerHTML = "";
+            document.getElementById("seksTerResS").innerHTML = "";
+            document.getElementById("maxmin").innerHTML = "";
+
+            for(let i = 1; i < 7; i++){
+                var ranTer = parseInt(Math.floor(Math.random() * 6) + 1);
+                document.getElementById("seksTerBilder").innerHTML += `<img src="media/terning${ranTer}.jpg" style="height: 15vh">`;
+                seksTerningSum = seksTerningSum + ranTer;
+                if(ranTer > maxnum){
+                    maxnum = ranTer;
+                }
+                if(ranTer < minnum){
+                    minnum = ranTer;
+                }
+
+                if(i < 6){
+                    document.getElementById("seksTerResT").innerHTML += ranTer + " + ";
+                }else{
+                    document.getElementById("seksTerResT").innerHTML += ranTer + " = ";
+                };
+            };
+            document.getElementById("seksTerResS").innerHTML += seksTerningSum;
+            document.getElementById("maxmin").innerHTML += "Høyeste kast var " + maxnum + " og laveste var " + minnum + ".";
+
         });
     </script>
         
