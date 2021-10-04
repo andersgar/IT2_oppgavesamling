@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.1</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.1: Sjekke temperaturer</h1>
+            <h3>Uke 39</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Temperatursjekk</h2>
+        <img id="vinduImg" src="media/vindu-start.jpg" alt="" style="border: 10px grey solid; height: 40vh;">
+        <form id="temperaturForm">
+            <label for="temperatur">Hvor høy er temperaturen?</label> <br>
+            <input id="temperatur" name="temperatur"></input> <br>
+            <input type="submit">
+        </form>
+    </section>
+
+    <script>
+        var temperaturForm = document.getElementById("temperaturForm");
+        var vinduImg = document.getElementById("vinduImg");
+        temperaturForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            var temperatur = temperaturForm['temperatur'].value;
+            if(temperatur > 0){
+                vinduImg.src = "media/vindu-aapent.jpg";
+                vinduImg.style = "border: 10px red solid; height: 40vh;"
+            }else if(temperatur < 0){
+                vinduImg.src = "media/vindu-lukket.jpg";
+                vinduImg.style = "border: 10px blue solid; height: 40vh;";
+            }else{
+                vinduImg.src = "media/vindu-start.jpg";
+                vinduImg.style = "border: 10px grey solid; height: 40vh;";
+            }
+        });
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
