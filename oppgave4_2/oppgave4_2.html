@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.2</title>
+</head>
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.2: Sjekke inntastingsverdier</h1>
+            <h3>Uke 39</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+
+    <section>
+        <h2>Valgt terning</h2>
+        <form id="valgtTerningForm">
+            <label for="terning">Velg en terning:</label>
+            <input id="terning" name="terning">
+            </input>
+            <input type="submit">
+        </form>
+        <img src="" alt="" id="valgtTerningImg" style="height: 30vh;">
+    </section>
+
+    <script>
+        var valgtTerningForm = document.getElementById("valgtTerningForm");
+        valgtTerningForm.addEventListener('submit', (e) =>{
+            e.preventDefault();
+            var valgtTerNr = valgtTerningForm['terning'].value;
+            
+            for(i = 1; i < 7; i++){
+                if(valgtTerNr == i){
+                    document.getElementById("valgtTerningImg").src = "media/terning"+valgtTerNr+".jpg";
+                    return;
+                }
+                if(i == 6){
+                    alert("Skriv et tall mellom 1 og 6.");
+                }
+            }
+        });
+
+    </script>
+
+<section>
+    <h2>Kalkulator</h2>
+    <form id="kalkulatorVar">
+        <label for="tall1">Skriv inn første tall</label>
+        <input id="tall1" name="tall1"></input> <br>
+        <label for="tall2">Skriv inn andre tall</label>
+        <input id="tall2" name="tall2"></input> <br>
+        <label for="regneart">Skriv inn ønsket regnart</label>
+        <input id="regneart" name="regneart"></input> <br>
+        <input type="submit">
+    </form>
+    <div id="kalkulator"></div>
+</section>
+
+<script>
+    var kalkulatorVar = document.getElementById("kalkulatorVar");
+    kalkulatorVar.addEventListener('submit', (e) =>{
+        e.preventDefault();
+        document.getElementById("kalkulator").innerHTML = "";
+        var tall1 = parseInt(kalkulatorVar['tall1'].value);
+        var tall2 = parseInt(kalkulatorVar['tall2'].value);
+        var regneart = kalkulatorVar['regneart'].value;
+
+        
+
+        var regnearter = ["+","-","/","*"];
+        for(i = 0; i < 4; i++){
+            if(regneart == "+"){
+                document.getElementById("kalkulator").innerHTML = `${tall1} + ${tall2} = ${tall1 + tall2}`;
+            }else if(regneart == "-"){
+                document.getElementById("kalkulator").innerHTML = `${tall1} - ${tall2} = ${tall1 - tall2}`;
+            }else if(regneart == "/"){
+                if(tall2 == 0){
+                alert("Tall 2 kan ikke være 0!")
+                return;
+                }
+                document.getElementById("kalkulator").innerHTML = `${tall1} / ${tall2} = ${(tall1 / tall2).toFixed(2)}`;
+            }else if(regneart == "*"){
+                document.getElementById("kalkulator").innerHTML = `${tall1} * ${tall2} = ${tall1 * tall2}`;
+            }else{
+                alert("Skriv inn en gyldig regneart!");
+            }
+        }
+    });
+</script>
+
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
