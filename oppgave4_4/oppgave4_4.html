@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.4</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.4: Arealutregner</h1>
+            <h3>Uke 40</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Utregner</h2>
+        <form id="arealForm">
+            <label for="lengde">Lengde</label>
+            <input id="lengde" name="lengde"></input> <br>
+            <label for="bredde">Bredde</label>
+            <input id="bredde" name="bredde"></input> <br>
+            <input type="submit">
+        </form>
+        <p id="arealRes"></p>
+        <p id="feilmelding"></p>
+        <div id="figur" style="background-color: green; height: 20px; width: 20px;"></div>
+
+    </section>
+
+    <script>
+        var arealForm = document.getElementById("arealForm");
+        var arealRes = document.getElementById("arealRes");
+        var feilmelding = document.getElementById("feilmelding");
+        var figur = document.getElementById("figur");
+
+        arealForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            arealRes.innerHTML = "";
+            feilmelding.innerHTML = "";
+
+            var lengde = arealForm['lengde'].value;
+            var bredde = arealForm['bredde'].value;
+
+            if(lengde <= 0 || bredde <= 0){
+                feilmelding.innerHTML = "Vennligst skriv inn positive verdier!";
+                return;
+            }
+
+            if(lengde == bredde){
+                arealRes.innerHTML = `Arealet av kvadratet er ${lengde*bredde}m<sup>2</sup>.`
+                figur.style = `height: ${lengde*20}px; width: ${bredde*20}px; background-color: green; color: white`;
+                figur.innerHTML =  `${lengde*bredde}m<sup>2</sup>.`
+            }else{
+                arealRes.innerHTML = `Arealet av rektangelet er ${lengde*bredde}m<sup>2</sup>.`
+                figur.style = `height: ${lengde*20}px; width: ${bredde*20}px; background-color: green; color: white`;
+                figur.innerHTML =  `${lengde*bredde}m<sup>2</sup>.`
+            }
+            
+        })
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
