@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.6</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.6: Butikk</h1>
+            <h3>Uke 40</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Butikk</h2>
+        <p>Programmet sjekker om butikken er åpen og om du får rabatt.</p>
+        <form id="form">
+            <label for="klokke">Klokkeslett</label>
+            <input id="klokke" name="klokke" type="time"></input> <br>
+            <label for="sum">Handlesum</label>
+            <input id="sum" name="sum"></input> <br>
+            <input type="submit">
+        </form>
+        <div id="twocolumns">
+            <div>
+                <p id="res"></p>
+            </div>
+            <div>
+                <img src="" id="logo" alt="">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var form = document.getElementById("form");
+        var res = document.getElementById("res");
+        var img = document.getElementById("logo");
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            res.innerHTML = "";
+
+            var sum = form['sum'].value;
+            var klokke = form['klokke'].value;
+            var klokkesum = klokke.replace(":","");
+
+            var d = new Date().getDate();
+            var m = new Date().getMonth() + 1;
+            var y = new Date().getFullYear();
+            var dato = `${d}.${m} - ${y}`;
+
+            if(klokkesum > 0700 && klokkesum < 2300){
+                logo.src = "media/kawi.gif"
+                
+            }else{
+                res.innerHTML = "Beklager, butikken er stengt. Sjekk i stedet ut vår nettbutikk";
+                res.style = "font-size: 30px; color: black;"
+                logo.src = "media/kawi-nett.gif"
+                return;
+            }
+
+            if(sum >= 500){
+                res.innerHTML = `Du får 10% rabatt på ditt kjøp på ${sum}kr, i dag ${dato}.`;
+                res.style = "font-size: 30px; color: red;"
+            }else{
+                res.innerHTML = "Beklager, du må handle for 500kr eller mer for å få rabatt. ";
+                res.style = "font-size: 25px; color: blue;"
+                
+            }          
+        });
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
