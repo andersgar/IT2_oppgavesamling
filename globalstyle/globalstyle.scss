@@ -28,7 +28,11 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+p,
+label,
+i,
+button {
   font-family: "Rubik", sans-serif;
   margin-top: 0;
   margin-bottom: 0;
@@ -132,6 +136,10 @@ tr:nth-child(even) {
   background-color: rgba(94, 194, 161, 0.459);
 }
 
+input {
+  margin-inline-start: 5px;
+}
+
 footer {
   width: 98%;
   margin: auto;
@@ -144,7 +152,7 @@ footer {
   margin: auto;
 }
 
-#twocolumns {
+.twocolumns {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -152,4 +160,8 @@ footer {
 .red {
   color: red;
   font-weight: bold;
+}
+
+.big {
+  font-size: 1.5em;
 }
