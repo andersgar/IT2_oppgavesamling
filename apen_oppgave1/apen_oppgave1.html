@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Åpen oppgave 1</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Åpen oppgave 1</h1>
+            <h3>Uke 42-43</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Passordtester</h2>
+        <p>Velkommen til Anders' passordtester! <br>
+        Jeg har laget denne passordtesteren slik at det skal være enkelt for deg å være sikker på at det passordet du ønsker oppfyller alle reglene som er gitt av tjenesten. Vennligst fyll ut de relevante reglene under for å starte testeren.</p>
+        <form id="input">
+            <label>Minimum antall symboler<input id="minChar" name="minChar" required></label><br>
+            <label>Maks antall symboler<input id="maxChar" name="maxChar" required></label><br>
+            <label>Alle bokstaver må være små<input id="allLowercase" type="checkbox"></label>
+            <label>Alle bokstaver må være store<input id="allUppercase" type="checkbox"></label><br>
+            <label>Ingen tall<input id="noNumbers" type="checkbox"></label>
+            <label>Bare tall<input id="allNumbers" type="checkbox"></label><br>
+            <br>
+            <label>Passord<input id="password" type="text" required></label>
+            <input type="submit">
+        </form>
+        <p id="feilmelding" class="red"></p>
+        <p id="resultat"></p>
+    </section>
+
+    <script>
+        var input = document.getElementById("input");
+        var feilmelding = document.getElementById("feilmelding");
+        var resultat = document.getElementById("resultat");
+        
+        input.addEventListener('submit', (e) => {
+            e.preventDefault();
+            feilmelding.innerHTML = "";
+            resultat.innerHTML = "";
+
+            var minChar = parseInt(input['minChar'].value);
+            var maxChar = parseInt(input['maxChar'].value);
+            var allLowercase = input['allLowercase'];
+            var allUppercase = input['allUppercase'];
+            var noNumbers = input['noNumbers'];
+            var allNumbers = input['allNumbers'];
+            var password = input['password'].value;
+           
+            if(minChar > maxChar || isNaN(minChar) || isNaN(maxChar)){
+                feilmelding.innerHTML += "Sjekk verdiene for antall symboler, husk at maksimumverdien må være høyere enn minimum!";
+            };
+            if(allLowercase.checked && allUppercase.checked || noNumbers.checked && allNumbers.checked){
+                feilmelding.innerHTML += "Du kan bare velge ett alternativ fra hvert par av gangen!";
+            }
+
+            if(password.length > maxChar || password.length < minChar){
+                resultat.innerHTML += "Passordet er ikke innenfor det gitte antall karakterene."
+            }
+
+
+
+            for(var i = 0; i < password.length; i++){
+                var char = password.charAt(i);
+                if(allUppercase.checked){
+                    if(char == char.toLowerCase() && isNaN(char)){
+                        resultat.innerHTML += "Det var en liten bokstav i passordet, prøv igjen!"
+                        return;
+                    }
+                }
+                if(allLowercase.checked){
+                    if(char == char.toUpperCase() && isNaN(char)){
+                        resultat.innerHTML += "Det var en stor bokstav i passordet, prøv igjen!"
+                        return;
+                    }
+                }
+                if(allNumbers.checked){
+                    if(isNaN(char)){
+                        resultat.innerHTML += "Passordet inneholdt en bokstav, prøv igjen!"
+                        return;
+                    }
+                }
+                if(noNumbers.checked){
+                    if(!isNaN(char)){
+                        resultat.innerHTML += "Passordet inneholdt et tall, prøv igjen!"
+                        return;
+                    }
+                }
+
+                console.log(char);
+
+                
+                /*
+                if(!inNaN(char * 1)){
+                    resultat.innerHTML += ""
+                }*/
+            }
+
+
+        });
+/*
+
+        var strings = 'this iS a TeSt 523 Now!';
+        var i=0;
+        var character='';
+        while (i <= strings.length){
+            character = strings.charAt(i);
+            if (!isNaN(character * 1)){
+                alert('character is numeric');
+            }else{
+                if (character == character.toUpperCase()) {
+                    alert ('upper case true');
+                }
+                if (character == character.toLowerCase()){
+                    alert ('lower case true');
+                }
+            }
+            i++;
+        }*/
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

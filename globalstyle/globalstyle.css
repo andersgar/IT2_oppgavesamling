@@ -157,4 +157,9 @@ footer {
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
 }
+
+.red {
+  color: red;
+  font-weight: bold;
+}
 /*# sourceMappingURL=globalstyle.css.map */
