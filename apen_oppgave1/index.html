@@ -11,7 +11,7 @@
     <title>Åpen oppgave 1</title>
 </head>
 <body>
-        <header>
+    <header>
         <div class="headertekst">
             <h1>Åpen oppgave 1</h1>
             <h3>Uke 42-43</h3>
@@ -24,6 +24,10 @@
             <div>
                 <h2>Passordtester</h2>
                 <p>Velkommen til Anders' passordtester!<br>Jeg har laget denne passordtesteren slik at det skal være enkelt for deg å være sikker på at det passordet du ønsker oppfyller alle kravene som stilles.</p>
+                <br>
+                <p>Velg fritt fra kravene til høyre før du skriver inn ønsket passord nedenfor.</p>
+                
+            
             </div>
             <div>
                 <img id="passordImg" src="" alt="" style="height: 30vh;">
@@ -36,6 +40,9 @@
                 <label class="big">Passord*<input id="password" type="text" required class="big"></label> <br>
                 <i>*påkrevd</i><br>
                 <button class="big">Test passordet</button>
+                <br>
+                <p id="feilmelding" class="red"></p>
+                <p id="resultat" class="green"></p>
             </div>
             <div>
                 <label>Minimum antall tegn*<input id="minChar" name="minChar" required></label><br>
@@ -44,11 +51,17 @@
                 <label>Må inneholde minst en stor bokstav<input id="uppercase" type="checkbox"></label><br>
                 <label>Må inneholde minst ett tall<input id="number" type="checkbox"></label><br>
                 <label>Må inneholde minst ett symbol<input id="symbol" type="checkbox"></label><br>
-                <!--<label>Må inneholde siffer som til sammen har sum lik 20<input id="sum20" type="checkbox"></label>-->
+                <label>Må inneholde siffer som til sammen har sum lik 20<input id="sum20" type="checkbox"></label><br>
+                <label>Må rime på nisse<input id="nisse" type="checkbox"></label><br>
+                <label>Må inneholde et tysk bilmerke<input id="tyskBil" type="checkbox"></label><br>
+                <label>Må inneholde en smileemoji ":)"<input id="smil" type="checkbox"></label><br>
+                <!--** FLere ideer:
+                kan ikke inneholde to av samme tegn
+                kan ikke være et fødselsnummer
+                -->                
             </div>
         </form>
-        <p id="feilmelding" class="red"></p>
-        <p id="resultat"></p>
+        
         
 
     </section>
@@ -74,15 +87,18 @@
             var number = input['number'];
             var symbol = input['symbol'];
             var sum20 = input['sum20'];
+            var nisse = input['nisse'];
+            var tyskBil = input['tyskBil'];
             var password = input['password'].value;
            
             if(minChar > maxChar || isNaN(minChar) || isNaN(maxChar)){
-                feilmelding.innerHTML += "Sjekk verdiene for antall symboler, husk at maksimumverdien må være høyere enn minimum! ";
+                alert("Sjekk verdiene for antall symboler, husk at maksimumverdien må være høyere enn minimum! "); 
                 return;
             }
 
             if(password.length > maxChar || password.length < minChar){
-                resultat.innerHTML += "Passordet er ikke innenfor det gitte antall karakterene. ";
+                feilmelding.innerHTML += 'Passordet er ikke innenfor det gitte antallet karakterer. <br>';
+                errCount++;
             }
 
             if(uppercase.checked){
@@ -92,7 +108,7 @@
                         break;
                     }
                     if(i == password.length - 1){
-                        resultat.innerHTML += "Det er ingen stor bokstav i passordet. ";
+                        feilmelding.innerHTML += 'Det er ingen stor bokstav i passordet. <br>';
                         errCount++;
                     }
                 }
@@ -105,7 +121,7 @@
                         break;
                     }
                     if(i == password.length - 1){
-                        resultat.innerHTML += "Det er ingen liten bokstav i passordet. ";
+                        feilmelding.innerHTML += 'Det er ingen liten bokstav i passordet. <br>';
                         errCount++;
                     }
                 }
@@ -118,7 +134,7 @@
                         break;
                     }
                     if(i == password.length - 1){
-                        resultat.innerHTML += "Det er ingen tall i passordet. ";
+                        feilmelding.innerHTML += 'Det er ingen tall i passordet. <br>';
                         errCount++;
                     }
                 }
@@ -127,19 +143,65 @@
             var symbolString = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
             if(symbol.checked){
                 if(!symbolString.test(password)){
-                    resultat.innerHTML += "Det er ingen symboler i passordet. "
+                    feilmelding.innerHTML += 'Det er ingen symboler i passordet. <br>';
                     errCount++;
                 }
             }
+
             if(sum20.checked){
                 var nums = password.replace(/[^0-9]/g,'');
-                console.log(nums);
-                var total = 0;
-                for(var i in nums){
-                    total += nums[i];
+                var sum = 0;
+                for(var i = 0; i < nums.length; i++){
+                    sum += parseInt(nums[i]);
                 }
-                console.log(total)
+                if(sum !== 20){
+                    feilmelding.innerHTML += 'Summen av sifrene er ikke lik 20. <br>';
+                    errCount++;
+                }
             }
+
+            if(nisse.checked){
+                var a = password.length - 4;
+                var b = password.length - 3;
+                var c = password.length - 2;
+                var d = password.length - 1;
+                var passEnd = password[a] + password[b] + password[c] + password[d];
+
+                if(passEnd.toUpperCase() !== "ISSE"){
+                    feilmelding.innerHTML += 'Passordet rimer ikke på nisse. <br>';
+                    errCount++;
+                }
+            }
+
+            var bilmerker = ["audi", "bmw", "mercedes", "mercedes-benz", "opel", "porsche", "volkswagen"];
+            if(tyskBil.checked){
+                for(var i = 0; i < bilmerker.length; i++){
+                    if(password.toLowerCase().includes(bilmerker[i])){
+                        break;
+                    }
+                    if(i == bilmerker.length - 1){
+                        feilmelding.innerHTML += 'Passordet inneholder ikke et bilmerke. <br>';
+                        errCount++;
+                    }
+                }
+            }
+
+            if(smil.checked){
+                if(!password.includes(":)")){
+                    feilmelding.innerHTML += 'Passordet inneholder ikke et smilefjes. <br>';
+                    errCount++;
+                }        
+            }
+
+            /*
+            function removeDuplicateCharacters(string) {
+            return string.split('')
+            .filter(function(item, pos, self) {
+                return self.indexOf(item) == pos;
+                })
+                .join('');
+            }
+            console.log(removeDuplicateCharacters('baraban'));*/
 
             if(errCount == 0){
                 resultat.innerHTML += "Gratulerer, passordet ditt samsvarer med kravene!"

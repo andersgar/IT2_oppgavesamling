@@ -167,9 +167,19 @@ footer {
       grid-template-columns: 1fr 1fr;
 }
 
+.red,
+.green {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 2vh 2vw;
+}
+
 .red {
   color: red;
-  font-weight: bold;
+}
+
+.green {
+  color: green;
 }
 
 .big {
