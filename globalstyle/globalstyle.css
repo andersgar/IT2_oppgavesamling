@@ -185,4 +185,22 @@ footer {
 .big {
   font-size: 1.5em;
 }
+
+#colorDiv {
+  max-width: 100%;
+  min-height: 40vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template: 1fr 1fr/ 1fr 1fr 1fr 1fr;
+}
+
+.dyrImg {
+  border-radius: 50%;
+  -webkit-box-shadow: 20px 20px 30px black;
+          box-shadow: 20px 20px 30px black;
+  width: auto;
+  max-width: inherit;
+}
 /*# sourceMappingURL=globalstyle.css.map */
