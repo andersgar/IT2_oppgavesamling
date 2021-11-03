@@ -37,11 +37,10 @@
         document.getElementById("colorDiv").style = " background-color:" + farger[randColor] + "; ";
         
         for(var i = 0; i < 5; i++){
-            var randSize = 20 + parseInt(Math.floor(Math.random()*30));
-            var randColumn = parseInt(Math.floor(Math.random()*4) + 1);
-            var randRow = parseInt(Math.floor(Math.random()*2) + 1);
-
-            document.getElementById("img"+i).style = `height: ${randSize}vh; grid-area: ${randRow} / ${randColumn} / span 1 / span 1;`
+            var randSize = 10 + parseInt(Math.floor(Math.random()*30));
+            var randTop = parseInt(Math.floor(Math.random()*45));
+            var randLeft = parseInt(Math.floor(Math.random()*70));
+            document.getElementById("img"+i).style = `height: ${randSize}vw; margin-left: ${randLeft}vw; margin-top: ${randTop}vh;`
             document.getElementById("img"+i).src = "media/" + bilder[i] + ".jpg";
         }
     </script>
