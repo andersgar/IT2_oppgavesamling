@@ -20,28 +20,26 @@
     </header>
     
     <section>
-        <div id="colorDiv">
-            <img id="img0" class="dyrImg">
-            <img id="img1" class="dyrImg">
-            <img id="img2" class="dyrImg">
-            <img id="img3" class="dyrImg">
-            <img id="img4" class="dyrImg">
-        </div>
+        <div id="colorDiv"></div>
     </section>
 
     <script>
         var bilder = ["ape", "gris", "hund", "katt", "mus"];
         var farger = ["coral", "darkgreen", "darkturquoise", "darkred", "darksalmon"];
-
         var randColor = parseInt(Math.floor(Math.random() * 5));
         document.getElementById("colorDiv").style = " background-color:" + farger[randColor] + "; ";
         
         for(var i = 0; i < 5; i++){
+            var img = document.createElement("img");
+            document.getElementById("colorDiv").appendChild(img);
+            img.classList.add("dyrImg");
+
             var randSize = 10 + parseInt(Math.floor(Math.random()*30));
             var randTop = parseInt(Math.floor(Math.random()*45));
             var randLeft = parseInt(Math.floor(Math.random()*70));
-            document.getElementById("img"+i).style = `height: ${randSize}vw; margin-left: ${randLeft}vw; margin-top: ${randTop}vh;`
-            document.getElementById("img"+i).src = "media/" + bilder[i] + ".jpg";
+            var randZ = parseInt(Math.floor(Math.random()*5)+1);
+            img.style = `height: ${randSize}vw; margin-left: ${randLeft}vw; margin-top: ${randTop}vh; z-index: ${randZ}`;
+            img.src = "media/" + bilder[i] + ".jpg";
         }
     </script>
         
