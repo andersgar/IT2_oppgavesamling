@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.10</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.10: Gangetabeller</h1>
+            <h3>Uke 45</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <form id="form">
+            <label for="tall" class="big">Tast inn et tall mellom 1 og 10</label>
+            <input type="text"id="tall"class="big">
+            <button class="big">Regn ut</button>
+        </form>
+        <div class="twocolumns">
+            <div class="twocolumns">
+                <div id="lilleG"></div>
+                <div id="storeG"></div>
+            </div>
+            <img src="" id="img">
+        </div>
+    </section>
+
+    <script>
+        var form = document.getElementById("form");
+        var lilleG = document.getElementById("lilleG");
+        var storeG = document.getElementById("storeG");
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            var tall = form['tall'].value;
+            if(tall < 1 || tall > 10){
+                alert("Vennligst skriv et tall mellom 1 og 10.")
+                return;
+            };
+            lilleG.innerHTML = "<b>Den lille gangetabellen: </b> <br>";
+            storeG.innerHTML = "<b>Den store gangetabellen: </b> <br>";
+            document.getElementById("img").src = "gangetabell.jpg";
+            lilleG.classList.add("borderBox");
+            storeG.classList.add("borderBox");
+
+            for(i = 1; i < 11; i++){
+                var iDisp = i;
+                if(iDisp.toString().length < 2){
+                    iDisp = "&nbsp" + "&nbsp" + iDisp; //Trenger tydeligvis to mellomrom for å ha samme bredde som et tall.
+                }
+                lilleG.innerHTML += iDisp + " * " + tall + " = " + (i*tall) + "<br>";
+                storeG.innerHTML += iDisp + "0" + " * " + tall + " = " + (i*tall*10) + "<br>";
+            }
+        });
+    </script>
+
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+</body>
+
+</html>

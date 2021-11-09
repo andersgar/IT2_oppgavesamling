@@ -189,3 +189,12 @@ footer {
   width: auto;
   max-width: inherit;
 }
+
+.borderBox {
+  border: 2px solid black;
+  width: fit-content;
+  padding: 2vw;
+  line-height: 2em;
+  font-size: 1.2em;
+  margin: 2vh auto;
+}
