@@ -54,11 +54,23 @@
 
             for(i = 1; i < 11; i++){
                 var iDisp = i;
+                var prodDisp = i*tall;
                 if(iDisp.toString().length < 2){
                     iDisp = "&nbsp" + "&nbsp" + iDisp; //Trenger tydeligvis to mellomrom for å ha samme bredde som et tall.
                 }
-                lilleG.innerHTML += iDisp + " * " + tall + " = " + (i*tall) + "<br>";
-                storeG.innerHTML += iDisp + "0" + " * " + tall + " = " + (i*tall*10) + "<br>";
+
+                if(tall.toString().length > 1){
+                    var charNum = 3;
+                }else{
+                    var charNum = 2;
+                }
+
+                if(prodDisp.toString().length < charNum){
+                    prodDisp = "&nbsp" + "&nbsp" + prodDisp; 
+                }
+
+                lilleG.innerHTML += iDisp + " * " + tall + " = " + prodDisp + "<br>";
+                storeG.innerHTML += iDisp + "0" + " * " + tall + " = " + prodDisp + "0" + "<br>";
             }
         });
     </script>
