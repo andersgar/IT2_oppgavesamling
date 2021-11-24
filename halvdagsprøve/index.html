@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Halvdagsprøve</title>
+</head>
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Halvdagsprøve</h1>
+            <h3>Uke 47</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Oppgave 1: Strømmetjenester</h2><br>
+        <h4>HUSLY BORETTSLAG</h4>
+        <img src="media/hus.jpg" alt="" style="width: 40vw; border: solid 2px blue">
+        <p>Hei beboere, dere kan nå velge til en strømmetjeneste til internettpakken Deres. Velg blant følgende:</p>
+        <form id="tjenester">
+            <div id="netflix"><p>Netflix</p><img src="media/netflix.png" alt="">
+                <div><p>Pris: 98,-/mnd</p><input type="checkbox" id="netflixBox"></div>
+            </div>
+            <div id="hbo"><p>HBO Max</p><img src="media/hbo.png" alt="">
+                <div><p>Pris: 98,- /mnd</p><input type="checkbox" id="hboBox"></div>
+            </div>
+            <div id="disney"><p>Disney+</p><img src="media/disney.png" alt="">
+                <div><p>Pris: 69,- /mnd</p><input type="checkbox" id="disneyBox"></div>
+            </div>
+            <button>Regn ut</button>
+        </form>
+        <br>
+        <p><b id="valg">Ditt valg:</b></p>
+        <p id="utregning"></p>
+    </section>
+
+    <div id="popup">
+        <h2>Ønsker du å legge til HBO Max til redusert pris?</h2>
+        <p>Nå kan du legge til tjenesten til kun <br> <b>68,- /mnd!</b></p>
+        <form action="" id="popupForm">
+            <label>Ja takk, jeg ønsker tjenesten.</label>
+            <input type="checkbox" id="popupJa"> <br>
+            <label>Nei takk.</label>
+            <input type="checkbox" id="popupNei"> <br>
+            <button>Send inn</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("tjenester").addEventListener('submit', (e) => {
+            e.preventDefault();
+            var tjenester = ["Netflix", "HBO Max", "Disney+"];
+            var priser = [98, 98, 69];
+
+            var checkCount = 0;
+            for(var i = 0; i < 3; i++){
+                if(document.forms[0].elements[i].checked){
+                    var valgtTjeneste = tjenester[i];
+                    var valgtPris = priser[i];
+                   checkCount++;
+                }
+            }
+            if(checkCount != 1){
+                alert("Vennligst velg nøyaktig én tjeneste.")
+                return;
+            }
+
+            var popupForm = document.getElementById("popupForm");
+            var popup = document.getElementById("popup");
+            if(document.forms[0].elements[2].checked){
+                popup.style = "display: inherit; ";
+                popupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    popup.style = "display: none;";
+                    if(popupForm["popupJa"].checked){
+                        if(popupForm["popupNei"].checked){alert("Vennligst bare velg ett alternativ"); return;}
+                        document.getElementById("valg").innerHTML = "Ditt valg: "+ valgtTjeneste + " og HBO Max";
+                        document.getElementById("utregning").innerHTML = `${valgtTjeneste}: ${valgtPris},- /mnd <br>
+                        HBO Max: 68,- /mnd (Ekstratilbud) <br>
+                        Husleie: 2580,- /mnd <br>
+                        <br>
+                        <b>Din totale husleie blir kr ${2580 + valgtPris + 68},-.`;
+                    }else if(popupForm["popupNei"].checked){
+                        if(popupForm["popupJa"].checked){alert("Vennligst bare velg ett alternativ"); return;}
+                        document.getElementById("valg").innerHTML = "Ditt valg: "+ valgtTjeneste;
+                        document.getElementById("utregning").innerHTML = `${valgtTjeneste}: ${valgtPris},- /mnd <br>
+                        Husleie: 2580,- /mnd <br>
+                        <br>
+                        Du takket nei til tilbudet om HBO Max.
+                        <br>
+                        <b>Din totale husleie blir kr ${2580 + valgtPris},-.`;
+                    }
+                });
+            }else{
+                document.getElementById("valg").innerHTML = "Ditt valg: " + valgtTjeneste;
+                document.getElementById("utregning").innerHTML = `${valgtTjeneste}: ${valgtPris},- /mnd <br>
+                Husleie: 2580,- /mnd <br>
+                <br>
+                <b>Din totale husleie blir kr ${2580 + valgtPris},-.`;
+            }
+        });
+       
+    </script>
+
+    <section>
+        <h2>Oppgave 2: Høstbilder</h2> <br>
+        <h4>Høstmåneder</h4>
+        <p id="maneder"></p> <br>
+        <form id="imgForm">
+            <label for="">Velg et tall mellom 1 og 3 :)</label>
+            <input type="text" id="bildeValg">
+            <button>Velg</button>
+        </form>
+        <img id="naturbilde" style="width: 50%;">
+        <p id="beskjed"></p>
+
+    </section>
+
+    <script>
+        var maned = ["September", "Oktober", "November"];
+        for(i = 0; i < 3; i++){
+            document.getElementById("maneder").innerHTML += maned[i] + "<br>";
+        }
+
+        var bilde = ["blar.jpg", "skog.jpg", "vann.jpg"];
+        var imgForm = document.getElementById("imgForm");
+        imgForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            var bildeValg = imgForm['bildeValg'].value;
+            if(bildeValg > 3 || bildeValg < 1){
+                alert("Vennligst skriv et tall mellom 1 og 3. ")
+                return;
+            }
+            document.getElementById("naturbilde").src = "media/" + bilde[bildeValg-1];
+       
+            document.getElementById("beskjed").innerHTML = `${maned[bildeValg-1]} er kanskje måneden som passer best til høstbilde nummer ${bildeValg}?`;
+        });
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

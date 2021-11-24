@@ -1,0 +1,84 @@
+#tjenester {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+}
+
+#tjenester > div {
+  border: solid black 2px;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 12px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#tjenester > div div {
+  justify-self: flex-end;
+}
+
+#tjenester > div p {
+  text-align: center;
+}
+
+#tjenester > div img {
+  width: 20vw;
+}
+
+#tjenester > div input {
+  font-weight: bold;
+  width: 100%;
+  margin: 2vh auto;
+}
+
+#tjenester button {
+  height: 50%;
+  margin: auto;
+}
+
+#tjenester #netflix {
+  background-color: black;
+  color: white;
+}
+
+#tjenester #hbo,
+#tjenester #disney {
+  background-color: white;
+}
+
+#popup {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  background-color: white;
+  border: 5px solid blue;
+  text-align: center;
+  font-size: 2em;
+  position: fixed;
+  width: 40%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 30%;
+  left: 25%;
+  border-radius: 20px;
+  -webkit-box-shadow: 8px 14px 38px rgba(0, 0, 0, 0.596);
+          box-shadow: 8px 14px 38px rgba(0, 0, 0, 0.596);
+  padding: 2vh 4vw;
+}
+
+#popup label {
+  font-size: 0.5em;
+}
+/*# sourceMappingURL=style.css.map */
