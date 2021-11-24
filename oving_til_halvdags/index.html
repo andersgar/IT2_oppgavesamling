@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Øving til prøve</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Øving til halvdagsprøve</h1>
+            <h3>Uke 46-47</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <form id="karakterForm">
+            <p>Tast inn tre karakterer så vil den regne ut snittet.</p>
+            <label for="kar1">Karakter 1</label>
+            <input id="kar1" type="text"><br>
+            <label for="kar2">Karakter 2</label>
+            <input id="kar2" type="text"><br>
+            <label for="kar3">Karakter 3</label>
+            <input id="kar3" type="text"><br>
+            <button>Regn ut snittet</button>
+        </form>
+        <p id="karakterResultat"></p>
+    </section>
+
+    <script>
+        var karakterForm = document.getElementById("karaktererForm");
+        var kar1 = karakterForm['kar1'].value;
+        var kar2 = karakterForm['kar2'].value;
+        var kar3 = karakterForm['kar3'].value;
+
+        karakterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById("karakterResultat").innerHTML = `Snittet ditt av karakterene er ${((kar1+kar2+kar3)/3).toFixed(2)}`;
+        });
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
