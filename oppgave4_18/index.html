@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.18</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.18: Quizlag</h1>
+            <h3>Uke 49</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Quizlag</h2>
+        <p id="res"></p>
+    </section>
+
+    <script>
+        var navn = document.getElementById("navn");
+        var poeng = document.getElementById("poeng");
+        var lagNavn = ["The Best", "Quizteam", "Mangos", "King of Quiz", "Roboot X"];
+        var poengSum = [410, 400, 392, 432, 497];
+        var nyttLag = prompt("Hva er ditt lags navn?");
+        var nySum = parseInt(prompt("Hvor mange poeng har dere?"));
+        lagNavn.push(nyttLag);
+        poengSum.push(nySum);
+        res.innerHTML = `
+        LAGNAVN: ${lagNavn.join(' - ')} <br>
+        POENG: ${poengSum.join(' - ')} <br>
+        `; //Skriver ut før de blir sortert.
+
+        var besteLag = "";
+        var besteSum = 0;
+        var totalPoeng = 0;
+        for(i = 0; i < poengSum.length; i++){
+            totalPoeng = totalPoeng + poengSum[i];
+            if(poengSum[i] > besteSum){
+                besteSum = poengSum[i];
+                besteLag = lagNavn[i];
+            }
+        };
+        var gjennomsnitt = (totalPoeng/poengSum.length).toFixed(1);
+        if(nySum > gjennomsnitt || nySum == gjennomsnitt){
+            var diff = "ditt lag har " + (nySum-gjennomsnitt).toFixed(1) + " poeng mer enn gjennomsnittet.";
+        }else{
+            var diff = "ditt lag har " + (gjennomsnitt-nySum).toFixed(1) + " poeng mindre enn gjennomsnittet.";
+        }
+        
+        poengSum.sort(function(a, b){return a-b});   
+        poengSum.reverse();
+        var pos = poengSum.indexOf(nySum,0);
+
+        res.innerHTML += `
+        SORTERTE POENG: ${poengSum.join(' - ')} <br> <br>
+        Vinnerlaget er ${besteLag} med ${besteSum} poeng! <br> <br>
+        Laget ditt ${nyttLag} kom på ${pos+1}. plass! <br>
+        Gjennomsnittlig poengsum er ${gjennomsnitt} poeng, det vil si at ${diff}
+        `;
+        
+
+        /*
+
+        var nyttNavn = prompt("Hva er ditt lags navn?");
+        var nyPoeng = prompt("Hvor mange poeng har dere?");*/
+
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

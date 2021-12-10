@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.15</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.15: Bekrefte passord</h1>
+            <h3>Uke 48</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Bekreft passord</h2>
+        <p id="resultat"></p>
+    </section>
+
+    <script>
+        var resultat = document.getElementById("resultat");
+        var passord = prompt("Vennligst tast inn ditt passord");
+        var feilNum = 0;
+        var feilMax = 3;
+
+        var inntast = prompt("Bekreft ditt passord");
+
+        while(passord != inntast && feilNum < 2){
+            alert("Du har ikke tastet inn riktig passord.");
+            feilNum++;
+            var inntast = prompt("Bekreft ditt passord, du har " + (feilMax-feilNum) + " forsøk igjen.");
+        }
+
+        if(inntast === passord){
+            resultat.innerHTML = "Passordet er bekreftet!";
+        }else{
+            resultat.innerHTML = "Du har brukt opp dine " + feilMax + " forsøk og passordet er IKKE bekreftet.";
+        }
+        
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

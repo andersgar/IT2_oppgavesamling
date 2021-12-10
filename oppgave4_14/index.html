@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 4.14</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 4.14: Antall Kaffekopper</h1>
+            <h3>Uke 48</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Vil du ha kaffe?</h2>
+        <img src="https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_33/2203981/171026-better-coffee-boost-se-329p.jpg" alt="kaffekopp" style="width: 50%">
+        <p id="resultat"></p>
+
+    </section>
+
+    <script>
+        var resultat = document.getElementById("resultat");
+        var antKopper = 0;
+
+        var kaffesvar = prompt("Vil du ha kaffe? Svar ja eller nei.").toLowerCase();
+        if(kaffesvar != "ja" && kaffesvar != "nei"){
+            alert("Vennligst sjekk inntastningen din.")
+            var kaffesvar = prompt("Vil du ha kaffe? Svar ja eller nei.").toLowerCase();
+        }
+
+        while(kaffesvar == "ja"){
+            antKopper++;
+            resultat.innerHTML = "Du har drukket " + antKopper + " kopper kaffe.";
+            kaffesvar = prompt("Vil du ha påfyll på kaffen? Svar ja eller nei.").toLowerCase();
+            if(kaffesvar != "ja" && kaffesvar != "nei"){
+            alert("Vennligst sjekk inntastningen din.")
+            var kaffesvar = prompt("Vil du ha kaffe? Svar ja eller nei.").toLowerCase();
+        }
+        }
+
+        if(antKopper == 1){
+            resultat.innerHTML = "Du har drukket " + antKopper + " kopp kaffe.";
+        }else{
+            resultat.innerHTML = "Du har drukket " + antKopper + " kopper kaffe.";
+        }
+        
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
