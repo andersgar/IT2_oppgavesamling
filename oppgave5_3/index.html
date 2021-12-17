@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 5.3</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 5.3: Areal med inntastingsverdier</h1>
+            <h3>Uke 50</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section id="content">
+        <h2>Areal av et rektangel</h2>
+        <button onclick="inntast()">Tast inn egne verdier</button>
+        <br>
+
+    </section>
+
+    <script>
+        content = document.getElementById("content");
+        visRektangel(8,4);
+
+        function visRektangel(h, b){
+            var figur = document.createElement('div');
+            content.appendChild(figur);
+            figur.style = `height: ${h*20}px; width: ${b*20}px; background-color: orange;`
+            var tekst = document.createElement('p');
+            content.appendChild(tekst);
+            tekst.innerHTML = "Arealet av rektangelet er " + (h*b) + " cm², høyden er " + h + " cm og bredden er " + b + " cm.";
+            content.appendChild(document.createElement('br'));            
+        }
+
+        function inntast(){
+            var h = prompt("Ny høyde");
+            var b = prompt("Ny bredde");
+            visRektangel(h,b);
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

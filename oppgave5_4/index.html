@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 5.4</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 5.4: Endre stiler</h1>
+            <h3>Uke 50</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section id="section">
+        <h2>Endre stilen på følgende side</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime iste tempore recusandae dolorum fugit odit ad facere ipsa rerum laudantium corrupti placeat repellendus consequatur, illo fugiat beatae maiores molestiae velit, nobis eveniet totam reiciendis itaque? Cupiditate alias placeat accusantium, beatae numquam culpa consectetur tenetur et suscipit deleniti atque, adipisci nemo.</p>
+        <button onclick="inntast()">Velg nye stiler</button>
+
+    </section>
+
+    <script>
+        var section = document.getElementById("section");
+
+        function endreStiler(bFarge, tFarge, tStor){
+            section.style = `background-color: ${bFarge}; color: ${tFarge}; font-size: ${tStor}px`;
+        }
+
+        function inntast(){
+            var bFarge = prompt("Ny bakgrunnsfarge");
+            var tFarge = prompt("Ny tekstfarge");
+            var tStor = prompt("Ny tekststørrelse");
+            endreStiler(bFarge, tFarge, tStor);
+        }
+
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
