@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.1</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.1: Dagens</h1>
+            <h3>Uke 1</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <div id="meny">
+            <img id="matbilde" src="ribbe.jpeg" alt="">
+            <button onclick="dagens()">Sjekk vår "dagens"</button>
+            <button onclick="barnemeny()">Barnemeny</button>
+            <h3 id="menytittel"></h3>
+            <p id="menytekst"></p>
+        </div>
+    </section>
+
+    <script>
+        var matbilde = document.getElementById("matbilde");
+        var menytittel = document.getElementById("menytittel");
+        var menytekst = document.getElementById("menytekst");
+
+        function dagens(){
+            matbilde.src = 'ribbe.jpeg';
+            menytittel.innerHTML = "Juletallerken"
+            menytekst.innerHTML = "Ribbe, pølse og pinnekjøtt. kr 150,-"
+        }
+
+        function barnemeny(){
+            matbilde.src = 'fries.jpg';
+            menytittel.innerHTML = "Barnemeny"
+            menytekst.innerHTML = "Pølse og pommes frites. kr 80,-"
+        }
+            
+    </script>
+
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
+
+<style>
+    #meny{
+        width: 50%;
+        margin: 4vh auto;
+    }
+    button{
+        width: 100%;
+        font-weight: bold;
+        font-size: 1.2em;
+        background-color: lightblue;
+        border: none;
+        margin: 1vh 0;
+        cursor: pointer;
+    }
+    #menytittel, #menytekst{
+        font-size: 2em;
+    }
+</style>
