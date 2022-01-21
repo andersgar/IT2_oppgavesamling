@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.5</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.5: Raskeste dyr</h1>
+            <h3>Uke 2</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Raske dyr!</h2>
+        <p>Trykk på knappen dersom du er klar til å få bilder av tre dyr og svare på hvilket dyr du mener løper raskest.</p>
+        <p>(Klikk etterpå på bildet av dyret for å velge.)</p>
+        <button onclick="visDyr()">Jeg er klar!</button>
+        <div id="dyreknapper" style="display: none;">
+            <button onclick="raskValg('katten')"><img src="katt.jpg" alt=""></button>
+            <button onclick="raskValg('hunden')"><img src="hund.jpg" alt=""></button>
+            <button onclick="raskValg('grisen')"><img src="gris.jpg" alt=""></button>
+        </div>
+        <p id="respons"></p>
+        <br>
+        <p id="fasitHover" onmouseover="raskFasit()" style="display: none;">Her er min mening - (hold musa over teksten her)</p>
+        <p id="fasit"></p>
+    </section>
+
+    <script>
+        function visDyr(){
+            document.getElementById("dyreknapper").style = "display: flex";
+        }
+
+        function raskValg(valgtDyr){
+            document.getElementById("respons").innerHTML = "Jasså, du tror " + valgtDyr + " er raskest?";
+            document.getElementById("fasitHover").style = "display: inline";
+        }
+
+        function raskFasit(){
+            document.getElementById("fasit").innerHTML = "Jeg tror at hunden er raskest!";
+        }
+    </script>
+
+    <style>
+        #dyreknapper > button > img{
+            height: 15vh;
+        }
+    </style>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

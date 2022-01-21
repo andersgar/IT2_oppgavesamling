@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.7</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.7: Grupperabatt</h1>
+            <h3>Uke 3</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Kino</h2>
+        <p>Skriv inn antall billetter du ønsker å kjøpe og se om du får rabatt!</p>
+        <input type="number" name="" id="">
+        <p id="respons"></p>
+
+    </section>
+
+    <script>
+        const kinoInput = document.querySelector('input');
+        const respons = document.getElementById("respons");
+
+        kinoInput.addEventListener('input', (e) => {
+            if(isNaN(kinoInput.value) || kinoInput.value == 0){
+                respons.innerHTML = "Vennligst tast inn et tall over 0."
+            }
+            else if(kinoInput.value < 12){
+                respons.innerHTML = "0% rabatt!"
+            }
+            else if(kinoInput.value < 20){
+                respons.innerHTML = "10% rabatt!"
+            }
+            else{
+                respons.innerHTML = "15% rabatt!"
+            }
+        })
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

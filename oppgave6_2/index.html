@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.2</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.2: Bensinforbruk</h1>
+            <h3>Uke 3</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Bensinkalkulator</h2>
+        <p>Skriv inn ditt forbruk av bensin:</p>
+        <label for="">Liter/mil</label>
+        <input id="literPerMil" type="number" step="0.1" min="0.1" max="10">
+        <label for="">Pris per liter</label>
+        <input id="kronerPerLiter" type="number" step="0.1" min="10" max="25">
+        <button onclick="regnUt()">Vis antall liter og pris</button>
+        <br>
+        <p id="respons"></p>
+    </section>
+
+    <script>
+        function regnUt(){
+            var literPerMil = document.getElementById("literPerMil").value;
+            var kronerPerLiter = document.getElementById("kronerPerLiter").value;
+            var respons = document.getElementById("respons");
+
+            if(literPerMil == "" || kronerPerLiter == ""){
+                alert("Vennligst fyll ut begge felter!");
+                return;
+            }
+
+            respons.innerHTML = "Du trenger å fylle minimum " + literPerMil*10 + " liter bensin per 10.mil.";
+            if((literPerMil*10) > 12){
+                respons.innerHTML += "<br>Dette kan bli en kostbar tur!";
+            }
+            else{
+                respons.innerHTML += "<br>Dette skal gå greit!";
+            }
+            respons.innerHTML += "<br><br>Total pris blir kr " + literPerMil*kronerPerLiter*10 + " for 10 mil.";
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
