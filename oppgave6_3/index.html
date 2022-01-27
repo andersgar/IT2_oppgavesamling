@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.3</title>
+</head>
+
+<style>
+    #filmOversikt, #filmOversikt2{
+        display: flex;
+        flex-wrap: wrap;
+    }
+</style>
+
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.3: Kinobilletter</h1>
+            <h3>Uke 4</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <h2>Aktuelle filmer:</h2>
+        <div id="filmBilder"></div>
+        <div id="filmliste"></div>
+        <br>
+        <select id="velgFilm"></select> 
+        <label>Antall billetter: </label>
+        <input id="antBilletter" type="number" step="1" min="1" max="10" value="1">
+        <button onclick="beregnPris()">Se bestilling</button>
+        <p id="resultat"></p>
+        
+
+    </section>
+
+    <script>
+        var filmer = ["Spider-Man: No Way Home", "The Matrix: Resurrections", "Clifford: Den store røde hunden"];
+        var pris = [170, 145, 120];
+        var tid = ["20:45", "19:30", "14:00"];
+        var img = ["spiderman.jpg", "thematrix.jpg", "clifford.jpg"];
+
+        for(var i = 0; i < filmer.length; i++){
+            document.getElementById("filmBilder").innerHTML += '<img src="' + img[i] + '" style="height: 50vh">';
+            document.getElementById("filmliste").innerHTML += `<b>Film ${i+1}: ${filmer[i]}</b> - ${tid[i]} - pris kr ${pris[i]} <br>`;
+            document.getElementById("velgFilm").innerHTML += '<option>' + filmer[i] + '</option>';
+        }
+
+        function beregnPris(){
+            var valgtFilm = document.getElementById("velgFilm").value;
+            var valgtFilmNum = filmer.indexOf(valgtFilm);
+            var numBilletter = document.getElementById("antBilletter").value;
+
+            if(numBilletter < 1 || numBilletter > 10 || valgtFilm == ""){
+                alert("Vennligst sjekk inntastingen din! Du må kjøpe minst en billett.");
+                return;
+            }
+            document.getElementById("resultat").innerHTML = `Din totale bestilling for ${numBilletter} til ${valgtFilm} blir kr ${numBilletter * pris[valgtFilmNum]}`;
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
