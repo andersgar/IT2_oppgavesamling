@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.12</title>
+</head>
+
+<style>
+    #artistOversikt{
+        display: flex;
+        flex-flow: row;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.12: Konserter</h1>
+            <h3>Uke 5</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    <section>
+        <h2>Musikk</h2>
+        <h3>Utvalgte artister</h3>
+        <div id="artistOversikt"></div>
+        <br>
+        <label>Velg forestilling: </label>
+        <select onchange="beregn()" id="velgForestilling"></select> 
+        <br>
+        <label>Billettype: </label>
+        <select onchange="beregn()" id="velgType">
+            <option value="U">Uten rabatt</option>
+            <option value="M">Med rabatt</option>
+        </select>
+        <br>
+        <br>
+        <p id="resultat"></p>
+    </section>
+
+    <script>
+        var artister = ["Tiesto + Matoma", "Karpe", "Salvatore Ganacci"];
+        var prisUR = [750, 800, 600];
+        var prisMR = [650, 750, 500];
+        var img = ["tiesto.jpg", "karpe.jpg", "salvatore.jpg"];
+
+        for(var i = 0; i < artister.length; i++){
+            document.getElementById("artistOversikt").innerHTML += '<div><img src="' + img[i] + '" style="height: 20vh"><p>' + artister[i] + '</p></div>';
+            document.getElementById("velgForestilling").innerHTML += '<option>' + artister[i] + '</option>';
+        }
+
+        function beregn(){
+            var valgtArtist = document.getElementById("velgForestilling").value;
+            var valgtArtistNum = artister.indexOf(valgtArtist); //Vet ikke helt om dette er den beste måten å gjøre det på... Forslag?
+            if(document.getElementById("velgType").value == "M"){
+                document.getElementById("resultat").innerHTML = "Du har valgt " + valgtArtist + " med rabatt. Prisen blir da kr " + prisMR[valgtArtistNum] + ",-.";
+            }else if(document.getElementById("velgType").value == "U"){
+                document.getElementById("resultat").innerHTML = "Du har valgt " + valgtArtist + " uten rabatt. Prisen blir da kr " + prisUR[valgtArtistNum] + ",-.";
+            }else{  
+                alert("Vennligst sjekk verdiene dine.");
+                return;
+            }
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
