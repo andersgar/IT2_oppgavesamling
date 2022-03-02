@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.15</title>
+</head>
+<style>
+    #res{
+        border: 1px solid blue;
+        padding: 2vh 1vw;
+        color: blue;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+</style>
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.15: Tur/Retur</h1>
+            <h3>Uke 6</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section class="twocolumns">
+        <div>
+            <h2>Velg reisemål</h2>
+            <select id="desValg" onchange="beregn()"></select>
+            <br>
+            <div id="res"></div>
+            <input type="radio" id="t" name="turValg" onchange="beregn()"> En vei
+            <input type="radio" id="tr" name="turValg" onchange="beregn()"> Tur/retur
+        </div>
+        <img src="https://previews.123rf.com/images/gekaskr/gekaskr1506/gekaskr150600083/40640727-collage-de-photos-de-l-architecture-des-anciennes-villes-d-europe.jpg" alt="Byer i Europa">
+    </section>
+
+    <script>
+        const reisemal = ["Praha", "Roma", "København"];
+        const pris = [1900, 2100, 1400];
+        const res = document.getElementById("res");
+
+        res.innerHTML = '<p>Gjør deg klar for reisen!</p>'
+
+        for(var i = 0; i < reisemal.length; i++){
+            document.getElementById("desValg").innerHTML += '<option>' + reisemal[i] + '</option>';
+        }
+
+        function beregn(){
+            var valgtDes = document.getElementById("desValg").value;
+            var valgtDesNr = reisemal.indexOf(valgtDes);
+
+            if(document.getElementById("t").checked){
+                res.innerHTML = `<p>Reisemål: ${valgtDes}<br>Pris for én vei blir kr ${pris[valgtDesNr]}</p>`;
+            }else if(document.getElementById("tr").checked){
+                res.innerHTML = `<p>Reisemål: ${valgtDes}<br>Pris for tur/retur blir kr ${pris[valgtDesNr]*2}</p>`;
+            }
+        }
+
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>

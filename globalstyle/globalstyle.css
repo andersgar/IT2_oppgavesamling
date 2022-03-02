@@ -157,7 +157,8 @@ footer {
 }
 
 .center {
-  margin: auto;
+  margin: 2vh auto;
+  width: 50%;
 }
 
 .twocolumns {
@@ -165,6 +166,10 @@ footer {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+}
+
+.twocolumns div {
+  padding: 10px;
 }
 
 .red,
@@ -210,5 +215,11 @@ footer {
   line-height: 2em;
   font-size: 1.2em;
   margin: 2vh auto;
+}
+
+select {
+  padding: 2px;
+  border-radius: 12px;
+  font-size: 1em;
 }
 /*# sourceMappingURL=globalstyle.css.map */

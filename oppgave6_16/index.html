@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Oppg 6.16</title>
+</head>
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Oppgave 6.16: Joggesko</h1>
+            <h3>Uke 7</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section class="center">
+        <img src="http://www.elle.no/content/uploads/sites/19/2019/01/balenciaga-sko.jpg" alt="Sko">
+        <h2>Skobutikk</h2>
+        <p><b>Joggesko: kr 750</b><br>
+        Bestill skoen i dag og få med ekstrautstyr til en billig penge: <br>
+        <br>
+        <input type="checkbox" id="ekstra-lisser" onchange="beregn()" value="15"> Ekstra lisser, kr 15 <br>
+        <input type="checkbox" id="impregnering" onchange="beregn()" value="50"> Impregnering, kr 50 <br>
+        <input type="checkbox" id="LED" onchange="beregn()" value="200"> LED-lys, kr 200 <br>
+        <input type="checkbox" id="signatur" onchange="beregn()" value="1000"> Få med eksklusiv signatur, kr 1000<br>
+
+        <br>
+        <p id="res">Valgt utstyr: - <br>
+        <b>Totalpris: 750kr</b></p>
+        </p>
+
+    </section>
+
+    <script>
+        const addOns = ["ekstra-lisser", "impregnering", "LED", "signatur"];
+        function beregn(){
+            var totPris = 0;
+            var valgtAddOns = [];
+            for(var i = 0; i < addOns.length; i++){
+                if(document.getElementById(addOns[i]).checked){
+                    totPris = totPris + parseInt(document.getElementById(addOns[i]).value);
+                    valgtAddOns.splice(0, 0, addOns[i]);
+                }
+            }
+            document.getElementById("res").innerHTML = `Valgt utstyr: ${valgtAddOns.join(', ')}<br><b>Totalpris: ${totPris}kr</b>`;
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2021
+    </footer>
+
+</body>
+
+</html>
