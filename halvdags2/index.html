@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Halvdags 2</title>
+    <style>
+        a:hover{
+            text-decoration: underline;
+        }
+        #animation{
+            position: relative;
+            height: 450px;
+        }
+        @keyframes flyttsten{     
+              0% {top: 250px;}       
+              80% {top: 20px;}    
+              100% {top: 40px;}   
+        }
+        #dekk, #sten{
+            position: absolute;
+        }
+
+        #dekk{
+            width: 400px;;
+            top: 200px;
+        }
+
+        #sten{
+            width: 300px;
+            left: 60px;
+            top: 250px;
+            animation: flyttsten 2s 1s forwards;
+        }
+
+        #quiz{
+            display: none;
+            grid-template-columns: 1fr 1fr 1fr;
+            font-size: 1.5em;
+        }
+
+        #quiz > div {
+            padding: 2px;
+        }
+
+        #quizEnd{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="headertekst">
+            <h1>Halvdagsprøve 2</h1>
+            <h3>25.04.2022</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section>
+        <video id="strongmanVideo" src="media/Strongman30s.mp4" poster="media/start.jpg" height="300px"></video> <br>
+        <b><i>
+            <a onclick="playPause()" id="playPause">Spill av</a> /
+            <a onclick="fromStart()">Start forfra</a>
+        </i></b>
+        <div id="animation">
+            <img id="sten" src="media/sten.png" alt="">
+            <img id="dekk" src="media/dekk.png" alt=""> 
+        </div>
+    </section>
+
+    <section id="utoverinfo">
+        <h2>Lær mer om utøverne</h2>
+        <select onchange="byttUtover()" id="velgUtover" style="height: 2em; font-size: 2em;">
+            <option selected disabled>Velg en utøver</option>
+            <option value="Hafthor Bjørnsson">Hafthor Bjørnsson</option>
+            <option value="Mateusz Kielizskowski">Mateusz Kielizskowski</option>
+            <option value="Martinis Licis">Martinis Licis</option>
+        </select><br>
+        <div class="twocolumns" style="width: 70%;">
+            <img src="media/placeholder.jpg" id="utoverBilde" height="400px">
+            <table id="utoverRes">
+                <tr>
+                    <th>Øvelse</th>
+                    <th>Antall kilo løftet</th>
+                </tr>
+                <tr>
+                    <td>Bag over bar</td>
+                    <td><p id="BOBWeight"></p></td>
+                </tr>
+                <tr>
+                    <td>Elephant bar deadlift</td>
+                    <td><p id="EBDWeight"></p></td>
+                </tr>
+                <tr>
+                    <td>Strategic Cyr Dumbbell</td>
+                    <td><p id="SCDWeight"></p></td>
+                </tr>
+                <tr>
+                    <th>Totalt antall kilo løftet gjennom tre øvelser:</th>
+                    <th><p id="totalWeight"></p></th>
+                </tr>
+            </table>
+            <!--!! Aner ikke hva slags søyle det menes at jeg skal lage? Et søylediagram liksom?-->
+        </div>
+    </section>
+
+    <section>
+        <h2>Quiz!</h2>
+        <div id="quizStartup">
+            <p style="font-size: 1.5em">Se over informasjonen en siste gang og trykk på knappen under når du er klar!</p><br>
+            <button onclick="startQuiz()" style="font-size: 1.5em;">Jeg er klar!</button>
+        </div>
+        <div id="quiz">
+            <div>
+                <img src="media/bag.jpg">
+                <p>Hvem var best i <b>Bag over bar</b>?</p>
+                <select id="quizBOB">
+                    <option selected disabled>Velg en utøver</option>
+                    <option value="Hafthor Bjørnsson">Hafthor Bjørnsson</option>
+                    <option value="Mateusz Kielizskowski">Mateusz Kielizskowski</option>
+                    <option value="Martinis Licis">Martinis Licis</option>
+                </select>
+            </div>
+            <div>
+                <img src="media/elephant.png">
+                <p>Hvem var best i <b>Elephant bar deadlift</b>?</p>
+                <select id="quizEBD">
+                    <option selected disabled>Velg en utøver</option>
+                    <option value="Hafthor Bjørnsson">Hafthor Bjørnsson</option>
+                    <option value="Mateusz Kielizskowski">Mateusz Kielizskowski</option>
+                    <option value="Martinis Licis">Martinis Licis</option>
+                </select>
+            </div>
+            <div>
+                <img src="media/dumbbell.jpg">
+                <p>Hvem var best i <b>Strategic Cyr Dumbbell</b>?</p>
+                <select id="quizSCD">
+                    <option selected disabled>Velg en utøver</option>
+                    <option value="Hafthor Bjørnsson">Hafthor Bjørnsson</option>
+                    <option value="Mateusz Kielizskowski">Mateusz Kielizskowski</option>
+                    <option value="Martinis Licis">Martinis Licis</option>
+                </select>
+            </div>
+            <button onclick="endQuiz()" style="font-size: 1.5em;">Se din poengsum!</button>
+        </div>
+        <div id="quizEnd">
+            <p id="res" style="font-size: 2em;"></p>
+            <button onclick="startQuiz()" style="font-size: 1.5em;">Prøv quizen igjen!</button>
+        </div>
+
+        
+    </section>
+        
+    <footer>
+        © Anders Garberg 2022
+    </footer>
+
+    <script>
+    var video = document.getElementById("strongmanVideo");
+    var linkText = document.getElementById("playPause");
+
+    function playPause(){
+        if (video.paused){
+            video.play();
+            linkText.innerHTML = "Pause";
+        }else{
+            video.pause();
+            linkText.innerHTML = "Spill av";
+        }
+    }
+
+    function fromStart(){
+        video.currentTime = 0;
+        video.play();
+    }
+
+    var utovere = ['Hafthor Bjørnsson','Mateusz Kielizskowski','Martinis Licis'];
+    var utoverBilde = ['hafthor.jpg','mateusz.jpg', 'martins.jpg'];
+    var BOBWeight = [41,34,31.75];
+    var EBDWeight = [465,402,411];
+    var SCDWeight = [136,145,124.3];
+
+    function byttUtover(){
+        let valgtUtover = document.getElementById("velgUtover").value;
+        let valgtNr = utovere.indexOf(valgtUtover);
+        let totalWeight = BOBWeight[valgtNr]+EBDWeight[valgtNr]+SCDWeight[valgtNr];
+        document.getElementById("utoverBilde").src = "media/" + utoverBilde[valgtNr];
+        document.getElementById("BOBWeight").innerHTML = BOBWeight[valgtNr]+"kg";
+        document.getElementById("EBDWeight").innerHTML = EBDWeight[valgtNr]+"kg";
+        document.getElementById("SCDWeight").innerHTML = SCDWeight[valgtNr]+"kg";
+        document.getElementById("totalWeight").innerHTML = totalWeight+"kg";
+    }
+
+    function startQuiz(){
+        document.getElementById("utoverinfo").style.display = "none";
+        document.getElementById("quizEnd").style.display = "none";
+        document.getElementById("quizStartup").style.display = "none";
+        document.getElementById("quiz").style.display = "grid";
+    }
+
+    function endQuiz(){
+        spmList = ["quizBOB", "quizEBD", "quizSCD"];
+        spmFasit = ["Hafthor Bjørnsson","Hafthor Bjørnsson","Mateusz Kielizskowski"];
+        let poengsum = 0;
+        let riktige = 0;
+        let respons = "";
+        for(var i = 0; i < 3; i++){
+            if(document.getElementById(spmList[i]).value == "Velg en utøver"){
+                alert("Du må velge ett alternativ på hvert spørsmål!");
+                return;
+            }
+            else if(document.getElementById(spmList[i]).value == spmFasit[i]){
+            poengsum = poengsum + 5;
+            riktige++;
+            }else{
+            poengsum = poengsum - 5;
+            }
+        }
+        if(riktige == 0){
+            respons = 'Huff da, det gikk ikke så bra. Kanskje du skal prøve igjen? <br> Du har 0 riktige og ' + poengsum + ' poeng.';
+        }else if(riktige == 1){
+            respons = 'Ganske dårlig... Kanskje du skal prøve igjen? <br> Du har 1 riktig og ' + poengsum + ' poeng.';
+        }else if(riktige == 2){
+            respons = 'Nesten full pott! Prøv en gang til for å få full pott! <br> Du har 2 riktige og ' + poengsum + ' poeng.';
+        }else if(riktige == 3){
+            respons = 'Gratulerer! Du fikk full pott! <br> Du har alle 3 riktige og ' + poengsum + ' poeng.';
+        }
+        document.getElementById("res").innerHTML = respons;
+        document.getElementById("utoverinfo").style.display = "block";
+        document.getElementById("quizEnd").style.display = "block";
+        document.getElementById("quiz").style.display = "none";
+    } 
+    </script>  
+
+</body>
+
+</html>

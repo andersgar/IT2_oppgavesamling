@@ -124,9 +124,12 @@ td {
   text-align: left;
   border: 1px solid rgba(255, 255, 208, 0.918);
   border-collapse: collapse;
+  font-family: "Rubik", sans-serif;
+  margin-inline-start: 2px;
 }
 table {
   width: 100%;
+  font-size: 2em;
 }
 th,
 td {
@@ -207,4 +210,12 @@ select {
   padding: 2px;
   border-radius: 12px;
   font-size: 1em;
+}
+
+button {
+  border-radius: 25px;
+  border: 2px solid black;
+  padding: 1vw;
+  font-weight: bold;
+  background-color: white;
 }
