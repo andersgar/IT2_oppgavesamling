@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../globalstyle/globalstyle.css">
+    <link rel="stylesheet" href="apen_oppgave2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Åpen oppgave 2</title>
+</head>
+<body>
+        <header>
+        <div class="headertekst">
+            <h1>Åpen oppgave 2</h1>
+            <h3>Termin 2</h3>
+        </div>
+        <a class="linkButton" href="../index.html">Tilbake til hjemsiden</a>
+    </header>
+    
+    <section id="jarrInfo" class="center">
+        <div class="slideshow">
+            <div class="slideshow-container">
+              <div class="slide fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="media/mandarin.png">
+              </div>
+              <div class="slide fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="media/mango.png">
+              </div>
+              <div class="slide fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="media/pineapple.png">
+              </div>
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>  
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span> 
+              <span class="dot" onclick="currentSlide(2)"></span> 
+              <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+
+            <script>
+                var slideIndex = 1;
+                showSlides(slideIndex);
+                
+                function plusSlides(n) {
+                  showSlides(slideIndex += n);
+                }
+                
+                function currentSlide(n) {
+                  showSlides(slideIndex = n);
+                }
+                
+                function showSlides(n) {
+                  var i;
+                  var slides = document.getElementsByClassName("slide");
+                  var dots = document.getElementsByClassName("dot");
+                  if (n > slides.length) {slideIndex = 1}    
+                  if (n < 1) {slideIndex = slides.length}
+                  for (i = 0; i < slides.length; i++) {
+                      slides[i].style.display = "none";  
+                  }
+                  for (i = 0; i < dots.length; i++) {
+                      dots[i].className = dots[i].className.replace(" active", "");
+                  }
+                  slides[slideIndex-1].style.display = "block";  
+                  dots[slideIndex-1].className += " active";
+                }
+              </script>
+
+            </div>
+            <div id="infoTekst">
+                <h1>Kjøp din Jarritos<sup>TM</sup> nå!</h1>
+                <h2>Velg mellom flere ulike smaker!</h2>
+                <ul>
+                    <li>Jarritos<sup>TM</sup> Mandarin 0,33L - 37kr</li>
+                    <li>Jarritos<sup>TM</sup> Mango 0,33L - 40kr</li>
+                    <li>Jarritos<sup>TM</sup> Pineapple 0,33L - 35kr</li>
+                </ul>
+                <h3>Legg inn din bestilling under og få Jarritos<sup>TM</sup> levert til deg!</h3>
+            </div>
+    </section>
+
+    <section class="center">
+        <video src="media/video.mp4" poster="media/poster.jpg" width="100%"></video> <br>
+        <b><i>
+            <a onclick="playPause()" id="playPause">Spill av</a> /
+            <a onclick="fromStart()">Start forfra</a>
+        </i></b>
+    </section>
+
+    <section class="center">
+        <h2>Sørg for å kjøpe nok Jarritos<sup>TM</sup>!</h2>
+        <br>
+        <div id="soyler">
+            <div id="chart">
+                <div style="width: 250%; background-color: orange;"><p><br>Gjennomsnittlig forbruk<br><b>25 flasker</b></p></div>
+                <div id="forbrukSoyle" style="width: 0%;"><p id="forbruk"><br>Ditt forbruk</p></div>
+            </div>
+        </div>
+        <p>Gjennomsnittlig ukentlig forbruk er 25 flasker i uka, slå den!</p>
+    </section>
+
+    <section class="center">
+        <h2>Din bestilling:</h2>
+        <form action="">
+            <label for="">Antall Jarritos<sup>TM</sup> Mandarin</label>
+            <input type="number" id="Mandarin" step="1" min="0" value="0" onchange="beregn()"> <br>
+            <label for="">Antall Jarritos<sup>TM</sup> Mango</label>
+            <input type="number" id="Mango" step="1" min="0" value="0" onchange="beregn()"> <br>
+            <label for="">Antall Jarritos<sup>TM</sup> Pineapple</label>
+            <input type="number" id="Pineapple" step="1" min="0" value="0" onchange="beregn()"> <br>
+            <br>
+            <h3>Tilvalg</h3>
+            <input type="checkbox" id="caps" onchange="beregn()" value="70"> Jarritos<sup>TM</sup> caps - kr 70<br>
+            <input type="checkbox" id="kald levering" onchange="beregn()" value="100"> Få brusen levert kald - kr 100 <br>
+            <input type="checkbox" id="signatur" onchange="beregn()" value="1000"> Få med eksklusiv signatur - kr 1000<br>
+            <br>
+            <h3>Frakt</h3>
+            <input type="radio" name="levAlt" value='0' id="Henting" onchange="beregn()">
+            <label for="">Hent på postkontoret selv - gratis!</label> <br>
+            <input type="radio" name="levAlt" value='100' id="Levering" onchange="beregn()">
+            <label for="">Levert på døra - 100kr</label>
+        </form>
+        <br>
+        <br>  
+        <form id="rabatt" action="">
+            <input type="text" id="rabattkode" placeholder="Rabattkode">
+            <button>Bruk koden</button>
+            <p class="smalltext">PS: Prøv koden "ansatt"</p> <!--!! Prøv rabattkoden "ansatt"! -->
+        </form>
+    </section>
+
+    <section class="center">
+        <p id="res">Valgte flasker:  <br>
+            Valgte tillegg:  <br>
+            Valgt frakt:  <br>
+        <b>Totalpris: 0kr</b></p>
+        </p>
+    </section>
+
+    <section id="flasker"><div id="bildeliste"></div></section>
+
+    <section class="center">
+        <h1>Hva synes du om denne opplevelsen?</h1>
+        <form id="rating">
+            <select name="" id="ratingNum">
+            </select>
+            <button>Send din tilbakemelding</button>
+        </form>
+    </section>
+
+    <div id="popup">
+        <h2>Takk for din tilbakemelding!</h2>
+        <h3>Vi jobber aktivt med å forbedre nettbutikken til Jarritos<sup>TM</sup></h3> <br>
+        <p>Vi setter pris på din rating på <span id="ratingDis"></span>/10!</p> <br>
+        <button onclick="lukkPopup()">Lukk</button>
+    </div>
+
+    <script>
+        const flasker = ["Mandarin", "Mango", "Pineapple"];
+        const flaskePris = [37, 40, 35];
+        const addOns = ["caps", "kald levering", "signatur"];
+        const flaskeBilder =["https://bigboybbq.no/wp-content/uploads/2021/04/Webpage-Size-3.png", "https://bigboybbq.no/wp-content/uploads/2021/04/Webpage-Size-5.png", "https://bigboybbq.no/wp-content/uploads/2021/04/Webpage-Size-4.png"];
+        const velgLev = document.querySelectorAll('input[name="levAlt"]');
+        const rabattform = document.getElementById("rabatt");
+
+        for(var i = 1; i < 11; i++){
+            const opt = document.createElement("option");
+            document.getElementById("ratingNum").appendChild(opt);
+            opt.innerHTML = i;
+            opt.value = i;
+        }
+        document.getElementById("ratingNum").selectedIndex = 9; 
+        rating.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            document.getElementById("ratingDis").innerHTML = document.getElementById("ratingNum").value;
+            document.getElementById("popup").style.display = "inline";
+        })
+
+        function lukkPopup(){
+            document.getElementById("popup").style.display = "none";
+        }
+
+
+
+
+        function beregn(){
+            var totPris = 0;
+            var valgtFlasker = [];
+            var valgtAddOns = [];
+            var valgtLev = "";
+            var bildeListe = [];
+            document.getElementById("bildeliste").innerHTML = "";
+            chart.innerHTML == "";
+
+            for(var i = 0; i < flasker.length; i++){
+                if(document.getElementById(flasker[i]).value > 0){
+                    totPris = totPris + (parseInt(document.getElementById(flasker[i]).value)*flaskePris[i]);
+                    var flaskeDis = parseInt(document.getElementById(flasker[i]).value) + " " + flasker[i];
+                    valgtFlasker.splice(0, 0, flaskeDis);
+                    for(var j = 0; j < parseInt(document.getElementById(flasker[i]).value); j++){
+                        bildeListe.splice(0, 0, flasker[i]);
+                    }
+                }
+            }
+
+            for(var i = 0; i < addOns.length; i++){
+                if(document.getElementById(addOns[i]).checked){
+                    totPris = totPris + parseInt(document.getElementById(addOns[i]).value);
+                    valgtAddOns.splice(0, 0, addOns[i]);
+                }
+            }
+
+            for(var i = 0; i < velgLev.length; i++){
+                if(velgLev[i].checked){
+                    totPris = totPris + parseInt(velgLev[i].value);
+                    valgtLev = velgLev[i].id;
+
+                }
+            }
+
+            document.getElementById("res").innerHTML = `Valgte flasker: ${valgtFlasker.join(', ')} <br>Valgte tillegg: ${valgtAddOns.join(', ')}<br>Valgt frakt: ${valgtLev} <br><b>Totalpris: ${totPris}kr</b>`;
+            document.getElementById("forbrukSoyle").style = 'width : ' + (bildeListe.length*10) + '%';
+            document.getElementById("forbruk").innerHTML = '<br>Ditt forbruk<br><b>' + bildeListe.length + ' flasker</b>'
+            
+            for(var i = 0; i < bildeListe.length; i++){
+                var img = document.createElement("img");
+                document.getElementById("bildeliste").appendChild(img);
+                img.src = "media/" + bildeListe[i] + ".png";
+                img.style = "height: 20vh";
+            }
+
+            rabattform.addEventListener('submit', (e) => {
+                e.preventDefault();            
+                if(document.getElementById("rabattkode").value == "ansatt"){
+                    console.log("Riktig");
+                    document.getElementById("res").innerHTML = `Gratulerer, du har fått 30% rabatt som ansatt! <br><br> Valgte flasker: ${valgtFlasker.join(', ')} <br>Valgte tillegg: ${valgtAddOns.join(', ')}<br>Valgt frakt: ${valgtLev} <br>Totalpris: ${totPris}kr <br><br>Rabatt: ${(totPris*0.3).toFixed(2)}kr <br><b>Å betale: ${(totPris*0.7).toFixed(2)}kr<b>`;
+                }else{
+                    alert("Beklager, koden fungerte ikke! ");
+                    return;
+                }
+            })
+
+            
+        }  
+        var video = document.querySelector("video");
+        var linkText = document.getElementById("playPause");
+
+        function playPause(){
+            if (video.paused){
+                video.play();
+                linkText.innerHTML = "Pause";
+            }else{
+                video.pause();
+                linkText.innerHTML = "Spill av";
+            }
+        }
+
+        function fromStart(){
+            video.currentTime = 0;
+            video.play();
+        }
+    </script>
+        
+    <footer>
+        © Anders Garberg 2022
+    </footer>
+
+</body>
+
+</html>

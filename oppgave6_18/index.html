@@ -20,9 +20,45 @@
     </header>
     
     <section>
-        <h2>Section 1</h2>
+        <h2>TAPAS Meny</h2>
+        <img src="https://www.safaricatering.no/wp-content/uploads/2020/08/Tapas-of-the-world_varmretter_3.jpg" style="width: 50%;" alt="">
+
+        <h4>Velg fra menyen og se totalpris for ditt måltid:</h4> <br>
+        <div id="menyListe"></div>
+        <br>
+        <button onclick="kalkuler()">Sjekk pris!</button> <br>
+        <br>
+        <div id="res"></div>
 
     </section>
+
+    <script>
+        var meny = ["Foccacia og aioli", "Machego med chilliolje", "Sobrasada", "Jamón Ibérico", "Fuet Ibérico", "Gazpacho og gordial-oliven", "Rømmegrøt"];
+        var menyPris = [37, 58, 58, 46, 68, 35, 31];
+        for(var i = 0; i < meny.length; i++){
+            document.getElementById("menyListe").innerHTML += '<input type="checkbox" name="meny"><label>'+ meny[i] + ', ' + menyPris[i] + ',- </label> <br>';
+        }
+
+        function kalkuler(){
+            var menyValg = document.getElementsByName("meny");
+            var resOutput = document.getElementById("res");
+            var prisSum = 0;
+            resOutput.innerHTML = '<h3>Dine valg:</h3><br>'
+            for(var i = 0; i < menyValg.length; i++){
+                if(menyValg[i].checked){
+                    resOutput.innerHTML += '<p>- ' + meny[i] + ', ' + menyPris[i] + ',-</p><br>';
+                    prisSum = prisSum + menyPris[i];
+                }
+            }
+            if(prisSum == 0){
+                alert("Du må velge minst en ting fra menyen.");
+                resOutput.innerHTML = '';
+            }else{
+                resOutput.innerHTML += '<br><p><b>Din totale pris blir kr ' + prisSum + ',- </p></b>';
+            }
+        }
+
+    </script>
         
     <footer>
         © Anders Garberg 2021

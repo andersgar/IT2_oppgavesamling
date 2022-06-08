@@ -1,0 +1,186 @@
+@media only screen and (max-width: 1200px) {
+  .center {
+    width: 100%;
+    margin: 2vh 0;
+  }
+}
+
+#jarrInfo {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr;
+      grid-template-columns: 1fr 3fr;
+}
+
+.slideshow {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+}
+
+.slideshow * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.slideshow .slide {
+  display: none;
+}
+
+.slideshow img {
+  vertical-align: middle;
+}
+
+.slideshow .slideshow-container {
+  position: relative;
+  margin: auto;
+}
+
+.slideshow .prev,
+.slideshow .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  -webkit-transition: 0.6s ease;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.slideshow .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.slideshow .prev:hover,
+.slideshow .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slideshow .text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.slideshow .numbertext {
+  color: black;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.slideshow .dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-transition: background-color 0.6s ease;
+  transition: background-color 0.6s ease;
+}
+
+.slideshow .active,
+.slideshow .dot:hover {
+  background-color: #717171;
+}
+
+.slideshow .fade {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .slideshow .prev,
+  .slideshow .next,
+  .slideshow .text {
+    font-size: 11px;
+  }
+}
+
+#infoTekst {
+  margin-top: 40px;
+}
+
+#soyler {
+  width: 300px;
+  text-align: center;
+  color: aliceblue;
+}
+
+#chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 200px;
+  height: 200px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#chart > div {
+  background-color: darkseagreen;
+  margin: 2px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 30px 20px;
+  width: 350px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: white;
+  z-index: 1;
+}
+/*# sourceMappingURL=apen_oppgave2.css.map */
